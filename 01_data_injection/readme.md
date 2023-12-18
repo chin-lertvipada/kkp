@@ -1,59 +1,81 @@
-====================
-SETUP STEP
-====================
+### SETUP STEP
 
-0/ go to the script folder
+
+#### 1/ go to the script folder
+```sh
 $ cd 01_data_injection
+```
 
-1/ create visual environment named 'ENV' (only 1st time)
+#### 2/ create visual environment named 'ENV' (only 1st time)
+```sh
 $ python -m venv ENV
+```
 
-2/ activate the visual environment
+#### 3/ activate the visual environment
+```sh
 $ source ENV/bin/activate
+```
 
-3/ install required libraries (only 1st time)
+#### 4/ install required libraries (only 1st time)
+```sh
 $ pip install -r requirements.txt
+```
 
-4/ start Postgres and Adminer services (need running docker engine)
+#### 5/ start Postgres and Adminer services (need running docker engine)
+```sh
 $ docker-compose up
+```
 
-5/ connect postgres : http://localhost:8080/
+#### 6/ connect postgres : http://localhost:8080/
+```sh
      - System: PostgreSQL
      - Server: postgres
      - Username: postgres
      - Password: postgres
      - Database: postgres
+```
 
 ==================================================
 
-====================
-RUNNING STEP
-====================
+### RUNNING STEP
 
-0/ go to the script folder
+#### 1/ go to the script folder
+```sh
 $ cd 01_data_injection
+```
 
-1/ create tables
+#### 2/ create tables
+```sh
 $ python create_tables.py
+```
 
-2/ insert data into table 'DelistedCompanies'
+#### 3/ insert data into table 'DelistedCompanies'
+```sh
 $ python etl_DelistedCompanies.py
+```
 
-3/ insert data into table 'DividendsHistorical'
+#### 4/ insert data into table 'DividendsHistorical'
+```sh
 $ python etl_DividendsHistorical.py #Param#
+```
 
 *** #Param# : pass the interested dividend ***
+```sh
 $ python etl_DividendsHistorical.py AAPL
+```
 
 ==================================================
 
-====================
-SHUTDOWN STEP
-====================
-9/ stop Postgres and Adminer services
-$ docker-compose down
+### SHUTDOWN STEP
 
-10/ deactivate the visual environment
+#### 1/ stop Postgres and Adminer services
+```sh
+$ docker-compose down
+```
+
+#### 2/ deactivate the visual environment
+```sh
 $ deactivate
+```
 
 ==================================================
